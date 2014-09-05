@@ -51,6 +51,11 @@
 			<artifactId>spark-streaming-flume_2.10</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
 	</dependencies>
 	<!--  create jar with dependencies -->
 	<build>
