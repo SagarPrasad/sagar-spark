@@ -60,7 +60,6 @@ public final class JavaFlumeEventCount {
     JavaReceiverInputDStream<SparkFlumeEvent> flumeStream = FlumeUtils.createStream(ssc, host, port);
 
     flumeStream.count();
-    
 
     flumeStream.count().map(new Function<Long, String>() {
       public String call(Long in) {
