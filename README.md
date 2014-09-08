@@ -19,5 +19,5 @@ flume-ng agent -c /etc/flume/conf -f /etc/flume/conf/flumeavro.conf -n sandbox
 
 
 <strong>flumeavro.conf is checked in resource folder</strong>
-
+<strong>createRuntime.sh to read omniturelog and write to another log file to simulate real time streaming</strong>
 
