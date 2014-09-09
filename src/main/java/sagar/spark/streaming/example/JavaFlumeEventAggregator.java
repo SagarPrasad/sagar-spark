@@ -56,7 +56,6 @@ public class JavaFlumeEventAggregator {
 				return result;
 			}
 		});
-
 	    JavaPairDStream<String, Integer> rdd = csvData.mapToPair(new PairFunction<String[], String, Integer>() {
 			  public Tuple2<String, Integer> call(String[] x) {
 				    return new Tuple2(x[12], 1);
