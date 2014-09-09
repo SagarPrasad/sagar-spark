@@ -48,6 +48,7 @@ NOTE:
 * flumeavro.conf is checked in resource folder
 * createRuntime.sh to read omniturelog and write to another log file to simulate real time streaming
 * Do mvn package to build the jar with dependencies
+* Start kafka Service ( to run the kafka exmaple : service kafka start/stop
 
 Sources:
 -------
