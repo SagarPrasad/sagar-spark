@@ -1,24 +1,55 @@
-<h1>Apache Spark and Spark Streaming example</h1>
+Apache Spark and Spark Streaming example
+========================================
 
-I have used hortonworks sandbox and installed Apache Spark and Spark Streaming.
 
-<strong>Running the simple app on Spark</strong>
+Note : I have used hortonworks sandbox and installed Apache Spark and Spark Streaming.
+
+
+Running the simple app on Spark
+-------------------------------
 
 cd /home/spark/spark-1.0.1 (Spark Installation Directory)
 
+```sh
 ./bin/spark-submit --class sagar.spark.example.SimpleApp examples/sagar-spark-0.0.1-SNAPSHOT.jar
+```
 
-Another example from Spark Streaming is to read the file from flume agent using avro sink.
+Spark Streaming + Flume (read the file from flume agent using avro sink)
+--------------------------------------------------------------------
 
-<strong>To Start the Avro Sink</strong>
+***To Start the Avro Sink***
+```sh
 flume-ng agent -c /etc/flume/conf -f /etc/flume/conf/flumeavro.conf -n sandbox
+```
 
-<strong>start Spark Streaming example</strong>
+*** To run  Spark Streaming example ***
+```sh
 ./bin/spark-submit examples/sagar-spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar --class sagar.spark.streaming.example.JavaFlumeEventCount 127.0.0.1 41414
+```
+
+Spark Streaming + Kafka
+----------------------
+* Install Kafka 
+* Run JavaKafkaWordCount to listen to truckevent topic
+
+```sh
+./bin/spark-submit examples/sagar-spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar class sagar.spark.streaming.example.JavaKafkaWordCount localhost:2181 mygroup truckevent 1
+```
+ 
+* Use Kafka tools to push the message to topic (truckevent)
+
+```sh
+ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic truckevent
+```
 
 
+NOTE:
+----
+* flumeavro.conf is checked in resource folder
+* createRuntime.sh to read omniturelog and write to another log file to simulate real time streaming
+* Do mvn package to build the jar with dependencies
 
-<strong>flumeavro.conf is checked in resource folder</strong>
-
-<strong>createRuntime.sh to read omniturelog and write to another log file to simulate real time streaming</strong>
-
+Sources:
+-------
+* Hortworks Tutorial
+* Spark Streaming examples
