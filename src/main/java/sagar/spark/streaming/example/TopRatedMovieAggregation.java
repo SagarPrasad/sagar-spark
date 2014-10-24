@@ -149,7 +149,7 @@ public class TopRatedMovieAggregation {
 						value.foreach(new VoidFunction<Tuple2<String,Integer>>(){
 							public void call(Tuple2<String, Integer> tuple)
 									throws Exception {
-								    System.out.println("Counter1 :" + tuple._1() + "," + tuple._2());
+								   // System.out.println("Counter1 :" + tuple._1() + "," + tuple._2());
 								    CassandraConnector.persist(tuple._1(), tuple._2());
 							}
 						});
@@ -193,7 +193,7 @@ public class TopRatedMovieAggregation {
 		System.out.println("Printing Cassandra Connection");
 		try {
 			CassandraConnector cc = new CassandraConnector();
-			cc.test();
+			cc.init();
 		} catch (Exception e) {
 			System.out.println("Error connect the cassandra" + e);
 		}
